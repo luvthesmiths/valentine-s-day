@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Bows in the background */
+        body::before {
+            content: "🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀";
+            font-size: 2rem;
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: red;
+            color: white;
+        }
+
+        .message {
+            display: none;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will u be my valentine, Azan? 💖</h1>
+    <div class="btn-container">
+        <button id="yesBtn" onclick="showLove()">Yes</button>
+        <button id="noBtn" onclick="shrinkNo()">No</button>
+    </div>
+    <p class="message" id="finalMessage">Yay! I love u baby, I hope we can spend every Valentine together! :3</p>
+
+    <script>
+        let noBtn = document.getElementById("noBtn");
+        let yesBtn = document.getElementById("yesBtn");
+        let messages = [
+            "Want to think again baby? 💕",
+            "Think wisely dawg! 🤨",
+            "You have no choice! 😈"
+        ];
+        let messageIndex = 0;
+
+        function shrinkNo() {
+            if (messageIndex < messages.length) {
+                noBtn.innerText = messages[messageIndex];
+                noBtn.style.transform = `scale(${1 - messageIndex * 0.3})`;
+                yesBtn.style.transform = `scale(${1 + messageIndex * 0.3})`;
+                messageIndex++;
+            } else {
+                noBtn.style.display = "none";
+            }
+        }
+
+        function showLove() {
+            document.getElementById("finalMessage").style.display = "block";
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
